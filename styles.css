@@ -7,8 +7,10 @@
 html{
     height: 100vh;
     width: 100vw;
-    font-size: 14px;
+    font-size: 12px;
     font-family: 'Amatic SC', cursive;
+    user-select: none;
+    overflow: hidden;
 }
 
 
@@ -26,7 +28,11 @@ html{
 
 .panel {
     font-family: inherit;
-    font-size: 2em;
+    font-size: 6em;
+    text-shadow: 3px 3px 5px rgba(0,0,0,0.18);
+    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: 1px;
+    color: white;
     min-height: 100vh;
     text-align: center;
     background-size: cover;
@@ -42,8 +48,42 @@ html{
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all .5s;
 }
 
+.open {
+    transition: all .5s;
+    flex: 3;
+}
+
+
+
+/* hidden text */
+.panel > *:first-child {
+    transform: translateY(-100%);
+}
+
+/* visible text */
+.panel.open > *:first-child {
+    transform: translateY(0);
+}
+
+/* hidden text */
+.panel > *:last-child {
+    transform: translateY(100%);
+}
+
+/* visible text */
+.panel.open > *:last-child {
+    transform: translateY(0);
+}
+
+/* small text */
 .panel > p:nth-child(2) {
     font-size: 3em;
+}
+
+/* big text */
+.panel.open > p:nth-child(2) {
+    font-size: 5em;
 }
